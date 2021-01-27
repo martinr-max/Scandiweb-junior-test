@@ -1,5 +1,8 @@
 <?php
-class Product {
+
+include_once('Product.php');
+
+class Products {
 
   private $connection;
 
@@ -85,28 +88,29 @@ class Product {
       }
 	}
 
-
-
-  public function displayDvds()
+  public function displayBooks()
   {
     try {
-      $stmt = $this->connection->prepare("SELECT * FROM Dvd
-         INNER JOIN Product  ON Product.productId = Dvd.dvdId");
-         $stmt->execute();
-         return $dvds = $stmt->fetchAll();
+      $stmt = $this->connection->prepare("SELECT * FROM Book
+         INNER JOIN Product
+         ON Product.productID = Book.bookId");
+      $stmt->execute();
+      $stmt->setFetchMode(PDO::FETCH_CLASS, 'Book');
+      return $books = $stmt->fetchAll();
     } catch (\Exception $e) {
       print "Error!: " . $e->getMessage() . "<br/>";
       die();
     }
   }
 
-  public function displayBooks()
+  public function displayDvds()
   {
     try {
-      $stmt = $this->connection->prepare("SELECT * FROM Book
-         INNER JOIN Product ON Product.productId = Book.bookId");
-         $stmt->execute();
-         return $books = $stmt->fetchAll();
+      $stmt = $this->connection->prepare("SELECT * FROM Dvd
+        INNER JOIN Product ON Product.productID = Dvd.dvdId");
+      $stmt->execute();
+      $stmt->setFetchMode(PDO::FETCH_CLASS, 'DVD');
+      return $dvds = $stmt->fetchAll();
     } catch (\Exception $e) {
       print "Error!: " . $e->getMessage() . "<br/>";
       die();
@@ -118,8 +122,9 @@ class Product {
     try {
       $stmt = $this->connection->prepare("SELECT * FROM Furniture
          INNER JOIN Product ON Product.productId = Furniture.furnitureId");
-         $stmt->execute();
-         return $furniture = $stmt->fetchAll();
+      $stmt->execute();
+      $stmt->setFetchMode(PDO::FETCH_CLASS, 'Furniture');
+      return $furniture = $stmt->fetchAll();
     } catch (\Exception $e) {
       print "Error!: " . $e->getMessage() . "<br/>";
       die();

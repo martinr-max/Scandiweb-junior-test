@@ -1,24 +1,24 @@
 <?php
 ob_start();
 include('../bootstrap.php');
-include('../product.php');
+include('../classes/Products.php');
 
 //header starts
 
 $title="'Add";
 $styleLink = 'add-product-form.css';
 $headLine = 'Add Product';
-$scriptUrl = 'main.js';
+$scriptUrl = 'add_product_func.js';
 
 //header ends
 
-$addProduct = new Product();
+$addProduct = new Products();
 if(isset($_POST['submit']) && $_POST['categoryName']) {
     $addProduct->insertData($_POST);
 }
 
 include_once('../header/header.php');?>
-  <header>
+  <nav>
     <h3> Add Product </h3>
       <div class="spacer"></div>
           <div class="buttons">
@@ -34,7 +34,7 @@ include_once('../header/header.php');?>
              class='btn btn-outline-danger'
              value='Cancel'
              form='addProductForm'>
-          </div>
+          </nav>
         </header>
         <hr>
         <form class="addProductForm" id="addProductForm" action="add.php" method="post" novalidate>
@@ -73,4 +73,4 @@ include_once('../header/header.php');?>
           </div>
           <div id="card"></div>
         </form>
-<?php include('../footer.php') ?>
+<?php include_once('../footer/footer.php'); ?>
