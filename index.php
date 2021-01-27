@@ -7,7 +7,6 @@ include('classes/products.php');
 //header starts
 
 $title = 'Products list';
-$headLine = "Product List";
 $styleLink = "main.css";
 $scriptUrl = 'index.js';
 

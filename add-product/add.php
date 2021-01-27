@@ -7,7 +7,6 @@ include('../classes/Products.php');
 
 $title="'Add";
 $styleLink = 'add-product-form.css';
-$headLine = 'Add Product';
 $scriptUrl = 'add_product_func.js';
 
 //header ends
