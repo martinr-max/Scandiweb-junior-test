@@ -2,8 +2,8 @@
 class Product
 {
   private $id;
-  private $sku;
-  private $name;
+  public $sku;
+  public $name;
   private $price;
   private $category;
 
@@ -52,8 +52,8 @@ class Furniture extends Product
   {
     if (is_array($attr)) {
       $this->width = $attr['width'];
-      $this->height = $data['height'];
-      $this->length = $data['length'];
+      $this->height = $attr['height'];
+      $this->length = $attr['length'];
     }
   }
 }

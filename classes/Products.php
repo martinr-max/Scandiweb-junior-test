@@ -117,7 +117,7 @@ class Products {
     }
   }
 
-  public function displayFurniture()
+    public function displayFurniture()
   {
     try {
       $stmt = $this->connection->prepare("SELECT * FROM Furniture
