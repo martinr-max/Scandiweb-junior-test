@@ -2,8 +2,8 @@
 class Product
 {
   private $id;
-  public $sku;
-  public $name;
+  private $sku;
+  private $name;
   private $price;
   private $category;
 
