@@ -11,7 +11,7 @@ $scriptUrl = 'add_product_func.js';
 
 //header ends
 
-$addProduct = new Products();
+$addProduct = new ProductPDO();
 if(isset($_POST['submit']) && $_POST['categoryName']) {
     $addProduct->insertData($_POST);
 }

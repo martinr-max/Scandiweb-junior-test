@@ -1,8 +1,7 @@
 <?php
+include('Product.class.php');
 
-include_once('Product.php');
-
-class Products {
+class ProductPDO {
 
   private $connection;
 
@@ -91,12 +90,12 @@ class Products {
   public function displayBooks()
   {
     try {
-      $stmt = $this->connection->prepare("SELECT * FROM Book
-         INNER JOIN Product
-         ON Product.productID = Book.bookId");
+      $stmt = $this->connection->prepare("SELECT bookId, sku, name, price, category, weight
+        FROM Product
+        INNER JOIN Book ON Product.productID = Book.bookId");
       $stmt->execute();
-      $stmt->setFetchMode(PDO::FETCH_CLASS, 'Book');
-      return $books = $stmt->fetchAll();
+       return $books = $stmt->fetchAll(PDO::FETCH_FUNC, "Book::buildFromPdo");
+
     } catch (\Exception $e) {
       print "Error!: " . $e->getMessage() . "<br/>";
       die();
@@ -106,11 +105,11 @@ class Products {
   public function displayDvds()
   {
     try {
-      $stmt = $this->connection->prepare("SELECT * FROM Dvd
-        INNER JOIN Product ON Product.productID = Dvd.dvdId");
+      $stmt = $this->connection->prepare("SELECT dvdId, sku, name, price, category, size
+        FROM Product
+        INNER JOIN Dvd ON Product.productID = Dvd.dvdId");
       $stmt->execute();
-      $stmt->setFetchMode(PDO::FETCH_CLASS, 'DVD');
-      return $dvds = $stmt->fetchAll();
+      return $dvds = $stmt->fetchAll(PDO::FETCH_FUNC, "DVD::buildFromPdo");
     } catch (\Exception $e) {
       print "Error!: " . $e->getMessage() . "<br/>";
       die();
@@ -120,11 +119,12 @@ class Products {
     public function displayFurniture()
   {
     try {
-      $stmt = $this->connection->prepare("SELECT * FROM Furniture
+      $stmt = $this->connection->prepare("SELECT furnitureId, sku, name, price,
+         category, length, height, width
+         FROM Furniture
          INNER JOIN Product ON Product.productId = Furniture.furnitureId");
       $stmt->execute();
-      $stmt->setFetchMode(PDO::FETCH_CLASS, 'Furniture');
-      return $furniture = $stmt->fetchAll();
+      return $furniture = $stmt->fetchAll(PDO::FETCH_FUNC, "Furniture::buildFromPdo");
     } catch (\Exception $e) {
       print "Error!: " . $e->getMessage() . "<br/>";
       die();

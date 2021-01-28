@@ -12,7 +12,7 @@ $scriptUrl = 'index.js';
 
 //Header ends
 
-$productsFetch = new Products();
+$productsFetch = new ProductPDO();
 $books = $productsFetch->displayBooks();
 $dvds = $productsFetch->displayDvds();
 $furniture = $productsFetch->displayFurniture();

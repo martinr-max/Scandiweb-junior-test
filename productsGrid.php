@@ -1,15 +1,14 @@
 <?php
-
   foreach($books as $book) { ?>
   <div id="product_card">
     <input
       class='form-check-input'
-      name='checkbox[<?php echo $book->bookId ?>]'
-      type='checkbox' value=<?php echo $book->bookId; ?>/>
-    <p> <?php echo $book->sku ; ?> </p>
-    <p> <?php echo $book->name; ?> </p>
-    <p> $ <?php echo $book->price;  ?> </p>
-    <p> Weight: <?php echo $book->weight;  ?> </p>
+      name='checkbox[<?php echo $book->getId() ?>]'
+      type='checkbox' value=<?php echo $book->getId(); ?>/>
+    <p> <?php echo $book->getSKU(); ?> </p>
+    <p> <?php echo $book->getName(); ?> </p>
+    <p> $ <?php echo $book->getPrice();  ?> </p>
+    <p> weight: <?php echo $book->getWeight();  ?> </p>
   </div>
   <?php }
 
@@ -17,12 +16,12 @@
   <div id="product_card">
     <input
       class='form-check-input'
-      name='checkbox[<?php echo $dvd->dvdId ?>]'
-      type='checkbox' value=<?php echo $dvd->dvdId; ?>/>
-    <p> <?php echo $dvd->sku ; ?> </p>
-    <p> <?php echo $dvd->name; ?> </p>
-    <p> $ <?php echo $dvd->price;  ?> </p>
-    <p> Size: <?php echo $dvd->size;  ?> </p>
+      name='checkbox[<?php echo $dvd->getId() ?>]'
+      type='checkbox' value=<?php echo $dvd->getId(); ?>/>
+    <p> <?php echo $dvd->getSKU(); ?> </p>
+    <p> <?php echo $dvd->getName(); ?> </p>
+    <p> $ <?php echo $dvd->getPrice();  ?> </p>
+    <p> Size: <?php echo $dvd->getSize();  ?> </p>
   </div>
   <?php }
 
@@ -30,14 +29,14 @@
   <div id="product_card">
     <input
       class='form-check-input'
-      name='checkbox[<?php echo $furn->furnitureId ?>]'
-      type='checkbox' value=<?php echo $furn->furnitureId; ?>/>
-    <p> <?php echo $furn->sku ; ?> </p>
-    <p> <?php echo $furn->name; ?> </p>
-    <p> $ <?php echo $furn->price;  ?> </p>
-    <p> Dimentions: <?php echo $furn->height;?> x
-                    <?php echo $furn->length; ?> x
-                    <?php echo $furn->width; ?>
+      name='checkbox[<?php echo $furn->getId() ?>]'
+      type='checkbox' value=<?php echo $furn->getId(); ?>/>
+    <p> <?php echo $furn->getSKU() ; ?> </p>
+    <p> <?php echo $furn->getName(); ?> </p>
+    <p> $ <?php echo $furn->getPrice();  ?> </p>
+    <p> Dimentions: <?php echo $furn->getHeight();?> x
+                    <?php echo $furn->getLength(); ?> x
+                    <?php echo $furn->getWidth(); ?>
     </p>
   </div>
   <?php }
